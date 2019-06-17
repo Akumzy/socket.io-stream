@@ -1,0 +1,5 @@
+node_modules
+dist
+example
+!example/*.js
+!example/*.html

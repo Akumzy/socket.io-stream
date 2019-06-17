@@ -1,0 +1,5 @@
+__test__
+*.config.js
+tsconfig.json
+.vscode
+example

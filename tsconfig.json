@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNEXT",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "resolveJsonModule": false,
+    "esModuleInterop": true,
+    "sourceMap": false,
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "__test__/**/*"]
+}

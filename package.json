@@ -1,0 +1,52 @@
+{
+  "name": "@akumzy/socket.io-stream",
+  "version": "0.0.2",
+  "description": "Upload file as stream with socket.io",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "watch": "tsc -p ./tsconfig.json -w",
+    "build": "tsc -p ./tsconfig.json"
+  },
+  "author": {
+    "name": "Akuma Isaac Akuma",
+    "email": "akumaisaacakuma@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^10.12.0",
+    "@types/socket.io": "^2.1.2",
+    "@types/socket.io-client": "^1.4.32",
+    "babel-jest": "^24.8.0",
+    "fs-extra": "^7.0.1",
+    "jest": "^24.8.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.2.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
+  },
+  "keywords": [
+    "electron",
+    "nw.js",
+    "file upload",
+    "nodejs",
+    "socket.io",
+    "socket.io-stream"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akumzy/socket.io-stream.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akumzy/socket.io-stream/issues"
+  },
+  "homepage": "https://github.com/Akumzy/socket.io-stream#readme",
+  "dependencies": {
+    "date-fns": "^1.30.1",
+    "rxjs": "^6.5.0"
+  }
+}
