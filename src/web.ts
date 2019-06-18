@@ -164,8 +164,7 @@ class ClientWeb {
         this.__clearMaxWaitMonitor()
         return
       }
-      if (this.maxWaitCounter >= this.maxWait)
-        this.stop('Response timeout id=' + this.id)
+      if (this.maxWaitCounter >= this.maxWait) this.resume()
     }, 1000)
   }
   private __clearMaxWaitMonitor() {
@@ -182,7 +181,9 @@ class ClientWeb {
     this.emit('pause')
   }
   public resume() {
-    if (!this.id) return
+    if (!this.id) {
+      return
+    }
     this.isPaused = false
     this.emit('resume')
     this.socket.emit(`__${this.eventNamespace}_::resume::__`, this.id)

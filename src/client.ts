@@ -95,8 +95,7 @@ export default class Client extends EventEmitter {
         this.__clearMaxWaitMonitor()
         return
       }
-      if (this.maxWaitCounter >= this.maxWait)
-        this.stop('Response timeout id=' + this.id)
+      if (this.maxWaitCounter >= this.maxWait) this.resume()
     }, 1000)
   }
   private __clearMaxWaitMonitor() {
