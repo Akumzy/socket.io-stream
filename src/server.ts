@@ -52,7 +52,10 @@ export default class Server {
   private cleaner: NodeJS.Timeout | null = null
   private maxWait: number // numbers of minutes to add to an upload expiration time default is 10 minutes
   private namespace: string
-  constructor(private io: SocketIO.Socket, options: Options = {namespace:'akuma', maxWait:10}) {
+  constructor(
+    private io: SocketIO.Socket,
+    options: Options = { namespace: 'akuma', maxWait: 10 }
+  ) {
     this.namespace = options.namespace
     this.maxWait = options.maxWait
     //create id
@@ -65,7 +68,7 @@ export default class Server {
       if (this.records.has(id)) {
         let streamInstance = this.streams.get(id)
         if (streamInstance) streamInstance.error('Stream closed')
-        this.cancel(id)
+        this.cancel(id, { code: 2, message: 'Client canceled upload' })
       }
     })
 
@@ -87,7 +90,7 @@ export default class Server {
   get records() {
     return records
   }
-  private __resume(id: string) {
+  private __resume = (id: string) => {
     //on resume check is this id instance still available
     //then return the total transfered buffer else
     //return nothing
@@ -291,7 +294,10 @@ export default class Server {
             if (stream) {
               stream.error('Reconnect timeout')
             }
-            this.cancel(val.id)
+            this.cancel(val.id, {
+              code: 1,
+              message: 'Client reconnect timeout'
+            })
             if (!this.records.size) {
               if (this.cleaner) clearInterval(this.cleaner)
             }

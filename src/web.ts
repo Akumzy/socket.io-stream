@@ -109,9 +109,17 @@ class ClientWeb {
       // listen for resume request
       .on(`__${this.eventNamespace}_::resume::${this.id}__`, this.__onResume)
       // listen for end event
-      .on(`__${this.eventNamespace}_::end::${this.id}__`, this.__onEnd)
+      .once(`__${this.eventNamespace}_::end::${this.id}__`, this.__onEnd)
+      .once(
+        `__${this.eventNamespace}_::canceled::${this.id}__`,
+        (reason: any) => {
+          this.__destroy()
+          this.emit('cancel', reason)
+        }
+      )
     this.__read(0, this.bytesPerChunk)
   }
+
   public upload(event: string, cb: cb) {
     this.callback = cb
     this.event = event
