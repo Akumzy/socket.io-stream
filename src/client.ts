@@ -95,7 +95,10 @@ export default class Client extends EventEmitter {
         this.__clearMaxWaitMonitor()
         return
       }
-      if (this.maxWaitCounter >= this.maxWait) this.resume()
+      if (this.maxWaitCounter >= this.maxWait) {
+        this.__clearMaxWaitMonitor()
+        this.resume()
+      }
     }, 1000)
   }
   private __clearMaxWaitMonitor() {
